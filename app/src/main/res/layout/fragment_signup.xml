@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    tools:context=".ui.auth.SignupFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/box_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="16dp"
+        app:cardBackgroundColor="@color/dark"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="22dp"
+            android:paddingVertical="30dp">
+
+            <EditText
+                android:id="@+id/field_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="20dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="@color/white"
+                android:singleLine="true"
+                android:textColorHint="@color/gray"
+                android:textSize="16sp"
+                android:hint="@string/txt_name"/>
+
+            <EditText
+                android:id="@+id/field_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="20dp"
+                android:singleLine="true"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="16sp"
+                android:hint="@string/txt_email"/>
+
+            <EditText
+                android:id="@+id/field_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="20dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="16sp"
+                android:inputType="textPassword"
+                android:hint="@string/txt_password"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                -<View
+                    android:id="@+id/btn_male"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:background="@drawable/bg_radio_button_inactive" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="80dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@string/txt_male"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:id="@+id/btn_female"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:background="@drawable/bg_radio_button_inactive" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@string/txt_female"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cornerRadius="8dp"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="@color/black"
+                android:letterSpacing="0"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="@string/txt_register"
+                android:textAllCaps="false"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:alpha="0.6"
+                    android:text="@string/txt_ask_reg"/>
+
+                <TextView
+                    android:id="@+id/btn_come_to_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/yellow_1"
+                    android:textSize="18sp"
+                    android:text="@string/txt_login"/>
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

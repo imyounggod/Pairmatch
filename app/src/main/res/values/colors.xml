@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="yellow_1">#FFFCC605</color>
+    <color name="yellow_2">#FFFCC605</color>
+    <color name="yellow_3">#FF000000</color>
+    <color name="teal_200">#FFFCC605</color>
+    <color name="teal_700">#FFFCC605</color>
+    <color name="yellow_4">#6C5C20</color>
+    <color name="gray">#B3B3B3</color>
+    <color name="black">#FF000000</color>
+    <color name="dark">#1A1A1A</color>
+    <color name="dark1">#242424</color>
+    <color name="dark2">#161616</color>
+    <color name="red">#F92525</color>
+    <color name="green">#69B600</color>
+    <color name="color_border_radio_button">#333333</color>
+    <color name="bg_global">#F5F5F5</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

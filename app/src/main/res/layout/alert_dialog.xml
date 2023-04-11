@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/dark">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="@color/white"
+                android:text="Политика конфиденциальности"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/box_middle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_below="@+id/tvTitle"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="26dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTitle"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/gray"
+                    android:text="Чтобы продолжить вы должны прочесть и принять условия"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/yellow_1"
+                    android:text="@string/txt_pp"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/box_middle"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/closeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    style="?attr/materialButtonOutlinedStyle"
+                    app:strokeColor="@color/yellow_1"
+                    app:cornerRadius="8dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/yellow_1"
+                    android:text="Нет"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/acceptBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="54dp"
+                    android:layout_marginStart="6dp"
+                    app:cornerRadius="8dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="@color/black"
+                    android:text="Да"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

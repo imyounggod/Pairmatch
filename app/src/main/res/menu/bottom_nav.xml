@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_main_bnv"
+        android:title="Главная" />
+    <item
+        android:id="@+id/newsFragment"
+        android:icon="@drawable/ic_news_bnv"
+        android:title="Новости" />
+    <item
+        android:id="@+id/infoFragment"
+        android:icon="@drawable/ic_info_bnv"
+        android:title="Инфо"  />
+    <item
+        android:id="@+id/historyMatchFragment"
+        android:icon="@drawable/ic_history_match_bnv"
+        android:title="История"  />
+    <item
+        android:id="@+id/leaderBoardFragment"
+        android:icon="@drawable/ic_leaders_bnv"
+        android:title="Лидеры"/>
+</menu>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Pairmatch</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_name">Имя</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_password">Пароль</string>
+    <string name="txt_male">Мужчина</string>
+    <string name="txt_female">Женщина</string>
+    <string name="txt_register">Регистрация</string>
+    <string name="txt_login_without_line">Войти</string>
+    <string name="txt_login"><u>Войти</u></string>
+    <string name="txt_reg"><u>Регистрация</u></string>
+    <string name="txt_ask_reg">Уже зарегистрированы?</string>
+    <string name="txt_ask_login">Ещё не зарегистрированы?</string>
+    <string name="txt_pp"><u>Политика конфиденциальности</u></string>
+    <string name="txt_lorem">Lorem ipsum dolor sit amet consectetur. Turpis ultrices posuere a lorem est mattis volutpat morbi. A leo consectetur tellus molestie vestibulum. Et mauris sit ipsum magna gravida. Tortor pharetra pellentesque varius sapien. Ultrices viverra cras purus elit.\n\nLibero lacus ullamcorper morbi porttitor ac. Arcu aliquet id tristique felis et mi aliquet pellentesque. Porttitor in est sem at mauris faucibus ultrices. Tempus sem lectus ac aenean morbi aliquet sed.</string>
+    <string name="txt_lorem2">Odio pretium eget vitae eu. Lacus et quam pellentesque ultrices morbi facilisis duis. Viverra proin tristique iaculis pellentesque vitae sit urna condimentum tristique. Nam sit at nascetur tortor ut quis ullamcorper at. Amet facilisis risus quam quis id consequat dui. Nisl id molestie mauris gravida. Pellentesque tristique elit varius fermentum quis vulputate. Mattis gravida bibendum mi lobortis et quis vitae auctor. Facilisis ut enim euismod massa amet. Tristique cursus sollicitudin consectetur fames in odio vulputate tristique. Scelerisque ut nascetur tempor curabitur. A est pharetra pellentesque etiam maecenas. In dignissim non ipsum nascetur accumsan volutpat. Urna sit euismod elementum justo at viverra orci in massa. Nulla egestas leo lacus ac etiam iaculis est vulputate. Ut nullam magna faucibus habitant velit. Nisi in ultrices a sit non. Consequat orci in pharetra et elit netus. Semper senectus convallis risus id adipiscing.Odio pretium eget vitae eu. Lacus et quam pellentesque ultrices morbi facilisis duis. Viverra proin tristique iaculis pellentesque vitae sit urna condimentum tristique. Nam sit at nascetur tortor ut quis ullamcorper at. Amet facilisis risus quam quis id consequat dui. Nisl id molestie mauris gravida. Pellentesque tristique elit varius fermentum quis vulputate. Mattis gravida bibendum mi lobortis et quis vitae auctor. Facilisis ut enim euismod massa amet. Tristique cursus sollicitudin consectetur fames in odio vulputate tristique. Scelerisque ut nascetur tempor curabitur. A est pharetra pellentesque etiam maecenas. In dignissim non ipsum nascetur accumsan volutpat. Urna sit euismod elementum justo at viverra orci in massa. Nulla egestas leo lacus ac etiam iaculis est vulputate. Ut nullam magna faucibus habitant velit. Nisi in ultrices a sit non. Consequat orci in pharetra et elit netus. Semper senectus convallis risus id adipiscing.</string>
+</resources>
