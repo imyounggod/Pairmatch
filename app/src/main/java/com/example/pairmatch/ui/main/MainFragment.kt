@@ -31,6 +31,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     private val vm: MainViewModel by viewModels()
     private val mainAdapter = MainAdapter()
     private var index = 0
+
+    private var isLow = false
+    private var isHigh = false
+
     private val playerAdapter = PlayerAdapter() { ind, player ->
         vm.selectPlayer(player)
     }
@@ -197,13 +201,18 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 }
             }
             btnLowOefficient.setOnClickListener {
-                vm.setBet(tvBetValue.text.toString(), "low")
+                isLow = true
             }
             btnHighOefficient.setOnClickListener {
-                vm.setBet(tvBetValue.text.toString(), "high")
+                isHigh = true
             }
             btnAddTeam.setOnClickListener {
+                if (isLow) vm.setBet(tvBetValue.text.toString(), "low")
+                if (isHigh) vm.setBet(tvBetValue.text.toString(), "high")
+
                 tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
+                isLow = false
+                isHigh = false
                 vm.isClearForm()
             }
             btnSelectPlayer.setOnClickListener {
