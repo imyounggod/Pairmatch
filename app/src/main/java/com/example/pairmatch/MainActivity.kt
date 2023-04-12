@@ -1,6 +1,8 @@
 package com.example.pairmatch
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        println(isOnline(this))
         checkLoggedUser()
     }
 
@@ -32,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun isOnline(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        return netInfo != null && netInfo.isConnectedOrConnecting
+    }
 
     override fun onBackPressed() {
         val currentFragment: Fragment = supportFragmentManager.fragments[0] ?: return

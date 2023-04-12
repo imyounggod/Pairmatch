@@ -202,9 +202,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             }
             btnLowOefficient.setOnClickListener {
                 isLow = true
+                isHigh = false
             }
             btnHighOefficient.setOnClickListener {
                 isHigh = true
+                isLow = false
             }
             btnAddTeam.setOnClickListener {
                 if (isLow) vm.setBet(tvBetValue.text.toString(), "low")

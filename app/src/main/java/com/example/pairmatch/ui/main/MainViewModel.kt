@@ -46,40 +46,40 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
         viewModelScope.launch {
             repository.getPlayers().collectLatest {
                 _players.postValue(it)
-                it.forEach {
-                    val dat = it.date
-                    println(dat)
-                    val date =
-                        dat?.let { it1 ->
-                            SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).parse(
-                                it1
-                            )
-                        }
-                    if (date != null) {
-                        if (date <= Calendar.getInstance().time) {
-                            val format = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-                            repository.insertPlayer(
-                                it.copy(
-                                    date = format.format(
-                                        format.parse(it.date).time + 86400000 * randInt(
-                                            7,
-                                            14
-                                        )
-                                    ),
-                                    score = it.score + (kotlin.random.Random.nextDouble(
-                                        -2.0,
-                                        2.0
-                                    ) * 100).toInt() / 100.0
-                                )
-                            )
-                        }
-
-                    }
-                }
                 println("PLAYErS" + it)
                 checkBets()
             }
+            _players.value!!.forEach {
+                val dat = it.date
+                println(dat)
+                val date =
+                    dat?.let { it1 ->
+                        SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).parse(
+                            it1
+                        )
+                    }
+                if (date != null) {
+                    if (date <= Calendar.getInstance().time) {
+                        val format = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+                        repository.insertPlayer(
+                            it.copy(
+                                date = format.format(
+                                    format.parse(it.date).time + 86400000 * randInt(
+                                        3,
+                                        14
+                                    )
+                                ),
+                                score = it.score + (kotlin.random.Random.nextDouble(
+                                    -2.0,
+                                    2.0
+                                ) * 100).toInt() / 100.0
+                            )
+                        )
+                    }
 
+                }
+            }
+            checkBets()
         }
 
     }
