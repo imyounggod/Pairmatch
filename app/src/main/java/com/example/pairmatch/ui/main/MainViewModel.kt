@@ -47,6 +47,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
         viewModelScope.launch {
             repository.getPlayers().collectLatest {
                 _players.value = it
+
             }
 
         }
@@ -82,6 +83,9 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
 
     var userBalance = 0.0
 
+    fun calculate(bet: Bet){
+
+    }
     fun setDate(dateEvent: String) {
         _selectedTeam.value = _selectedTeam.value?.copy(scheduleMatch = dateEvent)
     }
