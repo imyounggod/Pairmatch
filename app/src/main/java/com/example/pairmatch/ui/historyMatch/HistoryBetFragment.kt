@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HistoryBetFragment : BaseFragment<FragmentHistoryMatchBinding>(FragmentHistoryMatchBinding::inflate) {
 
-    private val vm: MainViewModel by viewModels()
+    private val vm: HistoryViewModel by viewModels()
     private val historyAdapter = HistoryBetAdapter()
 
 
@@ -27,6 +27,7 @@ class HistoryBetFragment : BaseFragment<FragmentHistoryMatchBinding>(FragmentHis
         }
 
         initViews()
+        initListeners()
     }
 
     private fun initViews() {
@@ -46,6 +47,12 @@ class HistoryBetFragment : BaseFragment<FragmentHistoryMatchBinding>(FragmentHis
             rvBets.adapter = historyAdapter
             rvBets.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
+    }
+
+    private fun initListeners(){
+        vm.bets.observe(viewLifecycleOwner){
+            historyAdapter.items = it.toMutableList()
         }
     }
 }

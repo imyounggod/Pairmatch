@@ -20,6 +20,7 @@ data class Team(
     var member4: TeamMember? = null,
     var member5: TeamMember? = null,
     val teamPoints: Double? = 0.0,
+    var endPoints: Double? = 0.0,
     val coefLow: Double? = (Random.nextDouble(0.5, 7.0) * 100).toInt() / 100.0,
     val coefHigh: Double? = (Random.nextDouble(0.5, 7.0) * 100).toInt() / 100.0
 )

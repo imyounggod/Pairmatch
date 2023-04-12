@@ -76,7 +76,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             btnMinusValue.setOnClickListener {
                 it.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.other_btn))
                 if (tvBetValue.text.toString().toDouble() != 1000.0) {
-                    val minusValue = tvBetValue.text.toString().toDouble() - 500.0
+                    var minusValue = tvBetValue.text.toString().toDouble() - 500.0
+                    if(minusValue < 0){
+                        minusValue = 0.0
+                    }
                     tvBetValue.text = minusValue.toInt().toString()
                 }
             }
@@ -94,6 +97,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
             vm.players.observe(viewLifecycleOwner) { data ->
                 playerAdapter.items = data.toMutableList()
+            }
+            vm.bets.observe(viewLifecycleOwner){data->
+                println(data)
+                rvTeam.isVisible = true
+                mainAdapter.items = data.toMutableList()
             }
             vm.event.observe(viewLifecycleOwner) { data ->
                 when (data) {
@@ -190,13 +198,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             }
             btnLowOefficient.setOnClickListener {
                 vm.setBet(tvBetValue.text.toString(), "low")
-                tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
             }
             btnHighOefficient.setOnClickListener {
                 vm.setBet(tvBetValue.text.toString(), "high")
-                tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
             }
             btnAddTeam.setOnClickListener {
+                tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
                 vm.isClearForm()
             }
             btnSelectPlayer.setOnClickListener {

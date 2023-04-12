@@ -25,14 +25,14 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertPlayerStart(teamMember: TeamMember)
 
-    @Query("SELECT * FROM bet")
-    fun getBets(): Flow<List<Bet>>
+    @Query("SELECT * FROM bet WHERE idUser = :idUser")
+    fun getBets(idUser: String): Flow<List<Bet>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBet(bet: Bet)
 
-    @Query("SELECT * FROM historyBet")
-    fun getHistoryBets(): Flow<List<HistoryBet>>
+    @Query("SELECT * FROM historyBet WHERE idUser = :idUser")
+    fun getHistoryBets(idUser:String): Flow<List<HistoryBet>>
 
     @Delete
     suspend fun deleteBet(bet: Bet)

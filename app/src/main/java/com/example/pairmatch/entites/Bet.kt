@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken
 @TypeConverters(ConvertersTeam::class)
 data class Bet(
     @PrimaryKey(autoGenerate = true) val id : Int? = null,
+    var idUser : String? = null,
     var bet_value: Int? = null,
     var coef_win: Boolean? = null,
     var coef_los: Boolean? = null,
@@ -23,6 +24,7 @@ data class Bet(
 @TypeConverters(ConvertersTeam::class)
 data class HistoryBet(
     @PrimaryKey(autoGenerate = true) val id : Int? = null,
+    var idUser : String? = null,
     var bet_value: Int? = null,
     var coef_win: Boolean? = null,
     var coef_los: Boolean? = null,

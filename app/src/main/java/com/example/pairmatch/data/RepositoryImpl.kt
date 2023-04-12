@@ -15,12 +15,12 @@ class RepositoryImpl(
         return dao.getTeams()
     }
 
-    override fun getBets(): Flow<List<Bet>> {
-       return dao.getBets()
+    override fun getBets(userId: String): Flow<List<Bet>> {
+       return dao.getBets(userId)
     }
 
-    override fun getHistoryBets(): Flow<List<HistoryBet>> {
-        return  dao.getHistoryBets()
+    override fun getHistoryBets(userId: String): Flow<List<HistoryBet>> {
+        return  dao.getHistoryBets(userId)
     }
 
     override fun getPlayers(): Flow<List<TeamMember>> {

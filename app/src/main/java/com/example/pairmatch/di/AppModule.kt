@@ -20,11 +20,7 @@ object AppModule {
     fun provideNoteDatabase(app: Application): AppDatabase {
 
         return  AppDatabase.getInstance(app)
-//        return  Room.databaseBuilder(
-//            app,
-//            AppDatabase::class.java,
-//            AppDatabase.DATABASE_NAME
-//        ).build()
+//
     }
 
 
