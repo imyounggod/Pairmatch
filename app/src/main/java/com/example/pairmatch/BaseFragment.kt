@@ -38,6 +38,13 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
         super.onDestroyView()
         _binding = null
     }
+    fun showMessage(message: String?) {
+        if (message.isNullOrBlank()) {
+            return
+        }
+        toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+        toast.show()
+    }
 
     override fun onBackPressed() {
         navController.popBackStack()

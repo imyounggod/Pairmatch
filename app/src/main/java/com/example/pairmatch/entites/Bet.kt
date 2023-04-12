@@ -10,7 +10,19 @@ import com.google.gson.reflect.TypeToken
 @Entity
 @TypeConverters(ConvertersTeam::class)
 data class Bet(
-    @PrimaryKey(autoGenerate = true) val id : Int,
+    @PrimaryKey(autoGenerate = true) val id : Int? = null,
+    var bet_value: Int? = null,
+    var coef_win: Boolean? = null,
+    var coef_los: Boolean? = null,
+    var coef: String? = null,
+    var bet_is_ready: Boolean? = null,
+    var team: Team? = null
+)
+
+@Entity(tableName = "historyBet")
+@TypeConverters(ConvertersTeam::class)
+data class HistoryBet(
+    @PrimaryKey(autoGenerate = true) val id : Int? = null,
     var bet_value: Int? = null,
     var coef_win: Boolean? = null,
     var coef_los: Boolean? = null,

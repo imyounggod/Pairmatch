@@ -6,10 +6,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.pairmatch.entites.Bet
-import com.example.pairmatch.entites.Team
-import com.example.pairmatch.entites.TeamMember
-import com.example.pairmatch.entites.arrTeam
+import com.example.pairmatch.entites.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -19,7 +16,7 @@ import kotlinx.coroutines.tasks.await
 import java.util.concurrent.Executors
 
 @Database(
-    entities = [TeamMember::class, Team::class, Bet::class],
+    entities = [TeamMember::class, Team::class, Bet::class, HistoryBet::class],
     version = 1
 )
 abstract class AppDatabase : RoomDatabase() {
