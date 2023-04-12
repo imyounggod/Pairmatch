@@ -9,9 +9,9 @@ import com.example.pairmatch.BottomNavigationActivity
 import com.example.pairmatch.databinding.FragmentNewsBinding
 
 class NewsFragment : BaseFragment<FragmentNewsBinding>(FragmentNewsBinding::inflate) {
-    private val vm by viewModels<NewsViewModule>()
+    private val vm by viewModels<NewsViewModul>()
     private val mainAdapter = NewsAdapter {
-        //navController.navigate(NewsFragmentDirections.actionNewsFragmentToPageFragment(it))
+        navController.navigate(NewsFragmentDirections.actionNewsFragmentToPageFragment(it))
         (activity as BottomNavigationActivity).hideBnv()
     }
 

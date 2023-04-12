@@ -81,7 +81,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 }
             }
             vm.userData.observe(viewLifecycleOwner) { data ->
-//               matchAdapter.userID = data?.user_uid
                 if (data?.user_gender == "male")
                     userAvatar.background =
                         ContextCompat.getDrawable(requireContext(), R.drawable.male_user_avatar)
@@ -111,6 +110,13 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 namePlayer3.text = data.member3?.name ?: "Игрок 3"
                 namePlayer4.text = data.member4?.name ?: "Игрок 4"
                 namePlayer5.text = data.member5?.name ?: "Игрок 5"
+
+                ivSmallPlayerPhoto1.setImageResource(data.member1?.photo ?: R.drawable.ic_plus_placeholder)
+                ivSmallPlayerPhoto2.setImageResource(data.member2?.photo ?: R.drawable.ic_plus_placeholder)
+                ivSmallPlayerPhoto3.setImageResource(data.member3?.photo ?: R.drawable.ic_plus_placeholder)
+                ivSmallPlayerPhoto4.setImageResource(data.member4?.photo ?: R.drawable.ic_plus_placeholder)
+                ivSmallPlayerPhoto5.setImageResource(data.member5?.photo ?: R.drawable.ic_plus_placeholder)
+
                 if (data.member1 != null && data.member2 != null && data.member3 != null &&
                     data.member4 != null && data.member5 != null
                 ) {
@@ -189,6 +195,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             btnHighOefficient.setOnClickListener {
                 vm.setBet(tvBetValue.text.toString(), "high")
                 tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
+            }
+            btnAddTeam.setOnClickListener {
+                vm.isClearForm()
             }
             btnSelectPlayer.setOnClickListener {
                 (activity as BottomNavigationActivity).showBnv()

@@ -1,6 +1,7 @@
-package com.example.pairmatch.ui.main
+package com.example.pairmatch.ui.historyMatch
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,11 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pairmatch.R
+import com.example.pairmatch.databinding.ItemHistoryBetBinding
 import com.example.pairmatch.databinding.ItemTeamBinding
 import com.example.pairmatch.entites.Team
 
-class MainAdapter :
-    RecyclerView.Adapter<MainAdapter.VH>() {
+class HistoryBetAdapter : RecyclerView.Adapter<HistoryBetAdapter.VH>() {
 
     var items: MutableList<Team?> = mutableListOf()
         @SuppressLint("NotifyDataSetChanged")
@@ -27,7 +28,8 @@ class MainAdapter :
         return VH(
             LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.item_team, parent, false))
+                .inflate(R.layout.item_history_bet, parent, false)
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -38,7 +40,7 @@ class MainAdapter :
     inner class VH(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
 
-        private val binding = ItemTeamBinding.bind(itemView)
+        private val binding = ItemHistoryBetBinding.bind(itemView)
 
         @RequiresApi(Build.VERSION_CODES.O)
         @SuppressLint("SetTextI18n", "SimpleDateFormat")
@@ -67,9 +69,7 @@ class MainAdapter :
 
                 tvScoreTeam.text = data.teamPoints.toString()
 
-                btnHighOefficient.text = data.coefHigh.toString()
-                btnLowOefficient.text = data.coefLow.toString()
-
+                boxResult.setBackgroundColor(Color.parseColor("")) //в зависимости от того прибавились очки или нет красишь RED #F92525 GREEN #69B600
             }
         }
     }

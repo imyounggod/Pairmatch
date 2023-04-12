@@ -298,25 +298,23 @@
                         android:layout_marginHorizontal="12dp"
                         android:orientation="horizontal">
 
-                        <RelativeLayout
+                        <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="15dp"
-                            android:layout_gravity="center">
+                            android:layout_marginVertical="4dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="36dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="0dp">
 
-                            <View
-                                android:layout_width="14dp"
-                                android:layout_height="2dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black"/>
+                            <ImageView
+                                android:id="@+id/iv_small_player_photo1"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/ic_plus_placeholder"/>
 
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_height="14dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black" />
-
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:id="@+id/name_player_1"
@@ -350,25 +348,23 @@
                         android:layout_marginHorizontal="12dp"
                         android:orientation="horizontal">
 
-                        <RelativeLayout
+                        <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="15dp"
-                            android:layout_gravity="center">
+                            android:layout_marginVertical="4dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="36dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="0dp">
 
-                            <View
-                                android:layout_width="14dp"
-                                android:layout_height="2dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black"/>
+                            <ImageView
+                                android:id="@+id/iv_small_player_photo2"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/ic_plus_placeholder"/>
 
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_height="14dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black" />
-
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:id="@+id/name_player_2"
@@ -401,25 +397,23 @@
                         android:layout_marginHorizontal="12dp"
                         android:orientation="horizontal">
 
-                        <RelativeLayout
+                        <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="15dp"
-                            android:layout_gravity="center">
+                            android:layout_marginVertical="4dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="36dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="0dp">
 
-                            <View
-                                android:layout_width="14dp"
-                                android:layout_height="2dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black"/>
+                            <ImageView
+                                android:id="@+id/iv_small_player_photo3"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/ic_plus_placeholder"/>
 
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_height="14dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black" />
-
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:id="@+id/name_player_3"
@@ -451,25 +445,23 @@
                         android:layout_marginHorizontal="12dp"
                         android:orientation="horizontal">
 
-                        <RelativeLayout
+                        <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="15dp"
-                            android:layout_gravity="center">
+                            android:layout_marginVertical="4dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="36dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="0dp">
 
-                            <View
-                                android:layout_width="14dp"
-                                android:layout_height="2dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black"/>
+                            <ImageView
+                                android:id="@+id/iv_small_player_photo4"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/ic_plus_placeholder"/>
 
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_height="14dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black" />
-
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:id="@+id/name_player_4"
@@ -501,25 +493,23 @@
                         android:layout_marginHorizontal="12dp"
                         android:orientation="horizontal">
 
-                        <RelativeLayout
+                        <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="15dp"
-                            android:layout_gravity="center">
+                            android:layout_marginVertical="4dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="36dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="0dp">
 
-                            <View
-                                android:layout_width="14dp"
-                                android:layout_height="2dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black"/>
+                            <ImageView
+                                android:id="@+id/iv_small_player_photo5"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/ic_plus_placeholder"/>
 
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_height="14dp"
-                                android:layout_centerInParent="true"
-                                android:background="@color/black" />
-
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:id="@+id/name_player_5"

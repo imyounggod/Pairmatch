@@ -1,7 +1,5 @@
 package com.example.pairmatch.ui.main
 
-import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,12 +8,8 @@ import com.example.pairmatch.domain.Repository
 import com.example.pairmatch.entites.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -59,7 +53,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
                     println(dat)
                     val date =
                         SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).parse(
-                            dat
+                            dat.toString()
                         )
                     if (date != null) {
                         if (date <= Calendar.getInstance().time) {
@@ -115,10 +109,12 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
                     )
                 )
             }
-            _selectedTeam.value = Team()
         }
     }
 
+    fun isClearForm(){
+        _selectedTeam.value = Team()
+    }
 
     fun setMember1(member: TeamMember) {
         if (_selectedTeam.value?.member1 == member || _selectedTeam.value?.member2 == member ||

@@ -12,7 +12,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.io.File
 
-class NewsViewModule : ViewModel() {
+class NewsViewModul : ViewModel() {
     private val _news = MutableLiveData<NewsData>()
     val news: MutableLiveData<NewsData> = _news
 

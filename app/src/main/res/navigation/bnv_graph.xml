@@ -14,7 +14,15 @@
         android:id="@+id/newsFragment"
         android:name="com.example.pairmatch.ui.news.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_newsFragment_to_pageFragment"
+            app:destination="@id/pageFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.example.pairmatch.ui.info.InfoFragment"
@@ -22,7 +30,7 @@
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/historyMatchFragment"
-        android:name="com.example.pairmatch.ui.historyMatch.HistoryMatchFragment"
+        android:name="com.example.pairmatch.ui.historyMatch.HistoryBetFragment"
         android:label="fragment_history_match"
         tools:layout="@layout/fragment_history_match" />
     <fragment
@@ -30,4 +38,15 @@
         android:name="com.example.pairmatch.ui.leaderBoard.LeaderBoardFragment"
         android:label="fragment_leader_board"
         tools:layout="@layout/fragment_leader_board" />
+    <fragment
+        android:id="@+id/pageFragment"
+        android:name="com.example.pairmatch.ui.news.PageFragment"
+        android:label="PageFragment">
+
+        <argument
+            android:name="newsData"
+            android:defaultValue="@null"
+            app:argType="com.example.pairmatch.entites.News"
+            app:nullable="true" />
+    </fragment>
 </navigation>

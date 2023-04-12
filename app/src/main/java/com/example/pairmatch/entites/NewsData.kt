@@ -1,9 +1,8 @@
 package com.example.pairmatch.entites
 
-import androidx.annotation.Keep
+import com.google.errorprone.annotations.Keep
 
 @Keep
 data class NewsData(
     var news : ArrayList<News> = arrayListOf()
 )
-
