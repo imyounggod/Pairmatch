@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 class SignupFragment : BaseFragment<FragmentSignupBinding>(FragmentSignupBinding::inflate) {
 
 
-    private val vm : AuthViewModel by viewModels()
+    private val vm: AuthViewModel by viewModels()
     private lateinit var dialogCustom: Dialog
     private var statePrivacyPolicy: Boolean = false
     private var gender = ""
@@ -59,20 +59,8 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(FragmentSignupBinding
             }
             btnRegister.setOnClickListener {
                 if (isValidateFields() && isValidatePassword()) {
-                    it.isEnabled = false
-                    viewLifecycleOwner.lifecycleScope.launch {
-                        val result = vm.registerUser(
-                            binding?.fieldName?.text.toString(),
-                            binding?.fieldEmail?.text.toString(),
-                            binding?.fieldPassword?.text.toString(),
-                            gender
-                        )
-                        if (result) openDialog()
-                        else it.isEnabled = true
-                    }
-
+                    if (!statePrivacyPolicy) openDialog()
                 } else {
-                    it.isEnabled = true
                     Toast.makeText(
                         requireContext(),
                         "Пожалуйста, заполните все поля!",
@@ -117,15 +105,34 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(FragmentSignupBinding
         }
 
         btnAccept.setOnClickListener {
-            statePrivacyPolicy = true
-            requireActivity().finish()
-            (activity)?.startActivity(
-                Intent(
-                    requireContext(),
-                    BottomNavigationActivity::class.java
+            viewLifecycleOwner.lifecycleScope.launch {
+                var result = vm.registerUser(
+                    binding?.fieldName?.text.toString(),
+                    binding?.fieldEmail?.text.toString(),
+                    binding?.fieldPassword?.text.toString(),
+                    gender
                 )
-            )
-            dialogCustom.dismiss()
+                if (result) {
+                    statePrivacyPolicy = true
+                    requireActivity().finish()
+                    (activity)?.startActivity(
+                        Intent(
+                            requireContext(),
+                            BottomNavigationActivity::class.java
+                        )
+                    )
+                    dialogCustom.dismiss()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Что-то пошло не так",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            }
+
+
         }
         btnDecline.setOnClickListener {
             statePrivacyPolicy = false
