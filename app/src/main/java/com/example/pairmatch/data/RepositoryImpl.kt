@@ -11,19 +11,22 @@ import kotlinx.coroutines.flow.Flow
 class RepositoryImpl(
     private val dao: AppDao
 ) : Repository {
-    override fun getTeams(): Flow<List<Team>> {
+    override suspend fun getTeams(): List<Team> {
         return dao.getTeams()
     }
 
-    override fun getBets(userId: String): Flow<List<Bet>> {
+    override suspend  fun getBets(userId: String): List<Bet>{
        return dao.getBets(userId)
     }
 
+    override fun getBetsF(userId: String): Flow<List<Bet>> {
+        return dao.getBetsF(userId)
+    }
     override fun getHistoryBets(userId: String): Flow<List<HistoryBet>> {
         return  dao.getHistoryBets(userId)
     }
 
-    override fun getPlayers(): Flow<List<TeamMember>> {
+    override suspend fun getPlayers(): MutableList<TeamMember> {
         return dao.getPlayers()
     }
 
@@ -39,7 +42,7 @@ class RepositoryImpl(
         dao.insertPlayerStart(teamMember)
     }
 
-    override suspend fun insertHistoryBet(bet: HistoryBet) {
+    override  suspend fun insertHistoryBet(bet: HistoryBet) {
         dao.insertHistoryBet(bet)
     }
 

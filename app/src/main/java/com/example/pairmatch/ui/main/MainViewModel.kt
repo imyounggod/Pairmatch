@@ -12,6 +12,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -42,53 +43,61 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
     val bets: LiveData<List<Bet>> = _bets
 
 
-    init {
+    fun getPlayers(){
         viewModelScope.launch {
-            repository.getPlayers().collectLatest {
-                _players.postValue(it)
-                println("PLAYErS" + it)
-                checkBets()
-            }
-            _players.value!!.forEach {
-                val dat = it.date
-                println(dat)
-                val date =
-                    dat?.let { it1 ->
-                        SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).parse(
-                            it1
-                        )
-                    }
-                if (date != null) {
-                    if (date <= Calendar.getInstance().time) {
-                        val format = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-                        repository.insertPlayer(
-                            it.copy(
+            while (true){
+
+                var list = repository.getPlayers()
+                _players.value = list
+                list.forEachIndexed { index, teamMember ->
+                    val dat = teamMember.date
+                    println(dat)
+                    val date =
+                        dat?.let { it1 ->
+                            SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).parse(
+                                it1
+                            )
+                        }
+                    println(date)
+                    if (date != null) {
+                        if (date <= Calendar.getInstance().time) {
+                            println("PLAYER GAME")
+                            val format = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+                            var newPlayer = teamMember.copy(
                                 date = format.format(
-                                    format.parse(it.date).time + 86400000 * randInt(
+                                    format.parse(teamMember.date).time + 86400000 * randInt(
                                         3,
                                         14
                                     )
                                 ),
-                                score = it.score + (kotlin.random.Random.nextDouble(
+                                score = teamMember.score + (kotlin.random.Random.nextDouble(
                                     -2.0,
                                     2.0
                                 ) * 100).toInt() / 100.0
                             )
-                        )
+                            repository.insertPlayer(
+                                newPlayer
+                            )
+                            list[index] = newPlayer
+                        }
                     }
-
                 }
+                _players.value = list
+
+                checkBets()
+                delay(1000L)
             }
-            checkBets()
+
         }
 
     }
 
+
     private fun checkBets() {
         viewModelScope.launch {
-            repository.getBets(FirebaseAuth.getInstance().uid!!).collectLatest {
-                println("BETS" + it)
-                it.forEach { bet ->
+
+                var list = repository.getBets(FirebaseAuth.getInstance().uid!!)
+                list.forEach { bet ->
                     val dat = bet.team!!.scheduleMatch?.substring(13)
                     println(dat)
                     val date =
@@ -98,8 +107,9 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
                     if (date != null) {
                         if (date <= Calendar.getInstance().time) {
                             val score =
-                                _players.value!![bet.team!!.member1!!.id!!-1].score + _players.value!![bet.team!!.member2!!.id!!-1].score + _players.value!![bet.team!!.member3!!.id!!-1].score + _players.value!![bet.team!!.member4!!.id!!-1].score + _players.value!![bet.team!!.member5!!.id!!-1].score
-                            val newBet = HistoryBet(idUser = FirebaseAuth.getInstance().uid,
+                                _players.value!![bet.team!!.member1!!.id!! - 1].score + _players.value!![bet.team!!.member2!!.id!! - 1].score + _players.value!![bet.team!!.member3!!.id!! - 1].score + _players.value!![bet.team!!.member4!!.id!! - 1].score + _players.value!![bet.team!!.member5!!.id!! - 1].score
+                            val newBet = HistoryBet(
+                                idUser = FirebaseAuth.getInstance().uid,
                                 bet_value = bet.bet_value,
                                 coef_win = bet.coef_win,
                                 coef_los = bet.coef_los,
@@ -112,24 +122,32 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
                             repository.insertHistoryBet(
                                 newBet
                             )
-                            if(newBet.team?.teamPoints!! > newBet.team?.endPoints!!){
-                                if(newBet.coef_los == true){
+                            if (newBet.team?.teamPoints!! > newBet.team?.endPoints!!) {
+                                if (newBet.coef_los == true) {
                                     firebaseFirestore.collection("users").document(userID.toString())
-                                        .update("user_balance", userBalance + newBet.bet_value!!.toDouble() * newBet.coef!!.toDouble())
+                                        .update(
+                                            "user_balance",
+                                            userBalance + newBet.bet_value!!.toDouble() * newBet.coef!!.toDouble()
+                                        )
                                 }
-                            }else{
-                                if (newBet.coef_win == true){
+                            } else {
+                                if (newBet.coef_win == true) {
                                     firebaseFirestore.collection("users").document(userID.toString())
-                                        .update("user_balance", userBalance + newBet.bet_value!!.toDouble() * newBet.coef!!.toDouble())
+                                        .update(
+                                            "user_balance",
+                                            userBalance + newBet.bet_value!!.toDouble() * newBet.coef!!.toDouble()
+                                        )
                                 }
                             }
                             repository.delete(bet)
                         }
                     }
                 }
-                _bets.value = it
+                _bets.value = list
             }
-        }
+
+
+
     }
 
     var userBalance = 0.0
@@ -145,7 +163,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
     }
 
     fun setBet(value: String, winOrLose: String) {
-        if (value.toDouble() > userBalance || value.toDouble() < 0){
+        if (value.toDouble() > userBalance || value.toDouble() < 0) {
             _event.value = ValidateEvent.Error("Некорректная сумма")
             return
         }
@@ -153,7 +171,8 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
             updateBalanceUser(value.toDouble())
             if (winOrLose == "high") {
                 repository.insertBet(
-                    Bet(idUser = FirebaseAuth.getInstance().uid,
+                    Bet(
+                        idUser = FirebaseAuth.getInstance().uid,
                         coef_win = true,
                         bet_value = value.toInt(),
                         team = _selectedTeam.value,
@@ -162,7 +181,8 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
                 )
             } else {
                 repository.insertBet(
-                    Bet(idUser = FirebaseAuth.getInstance().uid,
+                    Bet(
+                        idUser = FirebaseAuth.getInstance().uid,
                         coef_los = true,
                         bet_value = value.toInt(),
                         team = _selectedTeam.value,
@@ -174,7 +194,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
         _event.value = ValidateEvent.Success
     }
 
-    fun isClearForm(){
+    fun isClearForm() {
         _selectedTeam.value = Team()
     }
 

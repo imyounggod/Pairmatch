@@ -11,13 +11,13 @@ import kotlinx.coroutines.flow.Flow
 interface AppDao {
 
     @Query("SELECT * FROM team")
-    fun getTeams(): Flow<List<Team>>
+    suspend fun getTeams(): List<Team>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTeam(team: Team)
 
     @Query("SELECT * FROM teamMember")
-    fun getPlayers(): Flow<List<TeamMember>>
+    suspend fun getPlayers(): MutableList<TeamMember>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlayer(teamMember: TeamMember)
@@ -26,7 +26,9 @@ interface AppDao {
     suspend fun insertPlayerStart(teamMember: TeamMember)
 
     @Query("SELECT * FROM bet WHERE idUser = :idUser")
-    fun getBets(idUser: String): Flow<List<Bet>>
+     suspend fun getBets(idUser: String): List<Bet>
+    @Query("SELECT * FROM bet WHERE idUser = :idUser")
+     fun getBetsF(idUser: String): Flow<List<Bet>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBet(bet: Bet)

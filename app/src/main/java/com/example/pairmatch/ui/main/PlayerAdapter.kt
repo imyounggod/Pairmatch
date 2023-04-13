@@ -53,7 +53,7 @@ class PlayerAdapter (private val onClick: (index: Int, player: TeamMember) -> Un
                 dateSchedule.text = data.date
                 leftTeam.text = data.teamLeft
                 rightTeam.text = data.teamRight
-                playerPoint.text = data.score.toString()
+                playerPoint.text = "%.1f".format( data.score)
                 if (position == lastCheckedPosition) {
                     boxMain.setCardBackgroundColor(Color.parseColor("#FFFCC605"))
                 } else{

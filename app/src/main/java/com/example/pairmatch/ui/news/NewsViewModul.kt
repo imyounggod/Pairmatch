@@ -15,7 +15,7 @@ import java.io.File
 class NewsViewModul : ViewModel() {
     private val _news = MutableLiveData<NewsData>()
     val news: MutableLiveData<NewsData> = _news
-
+    val storageRef = FirebaseStorage.getInstance().reference
     init {
         getData()
     }
@@ -29,16 +29,15 @@ class NewsViewModul : ViewModel() {
 
     private suspend fun getNews(): NewsData? {
         var json: NewsData? = null
-        val storageRef = FirebaseStorage.getInstance().reference
 
-        val islandRef = storageRef.child("news.json")
+        val islandRef = storageRef.child("news.txt")
 
         val localFile = withContext(Dispatchers.IO) {
             File.createTempFile("news", "txt")
         }
 
         val result = islandRef.getFile(localFile).await()
-
+        println(localFile)
         if (result.task.isSuccessful) {
             json = GsonBuilder().create().fromJson(
                 localFile.readText(),

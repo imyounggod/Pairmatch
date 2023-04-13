@@ -20,7 +20,7 @@ class PageFragment : BaseFragment<FragmentPageBinding>(FragmentPageBinding::infl
 
     private fun initViews() {
         binding?.run {
-                tvTitle.text = args.newsData?.text
+                tvTitle.text = args.newsData?.header
                 tvDescription.text = args.newsData?.text
                 Glide.with(requireContext()).load(args.newsData?.logo).into(ivLogo)
         }

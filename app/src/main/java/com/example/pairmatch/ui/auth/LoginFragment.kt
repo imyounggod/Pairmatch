@@ -41,31 +41,32 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 onBackPressed()
             }
             btnLogin.setOnClickListener {
-                btnLogin.setOnClickListener {
-                    if (isValidateData()){
-                        viewLifecycleOwner.lifecycleScope.launch {
-                            val result = vm.login(fieldEmail.text.toString(), fieldPassword.text.toString())
-                            if (result) {
+                it.isEnabled = false
+                if (isValidateData()){
+                    viewLifecycleOwner.lifecycleScope.launch {
 
-                                requireActivity().finish()
-                                (activity)?.startActivity(
-                                    Intent(
-                                        requireContext(),
-                                        BottomNavigationActivity::class.java
-                                    )
-                                )
-                                dialogCustom.dismiss()
-                            } else {
-                                Toast.makeText(
+                        val result = vm.login(fieldEmail.text.toString(), fieldPassword.text.toString())
+                        if (result) {
+
+                            requireActivity().finish()
+                            (activity)?.startActivity(
+                                Intent(
                                     requireContext(),
-                                    "Что-то пошло не так, попробуйте снова!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+                                    BottomNavigationActivity::class.java
+                                )
+                            )
+                            dialogCustom.dismiss()
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Что-то пошло не так, попробуйте снова!",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                    }  else {
-                        Toast.makeText(requireContext(), "Введите корректные данные!", Toast.LENGTH_SHORT).show()
                     }
+                }  else {
+                    it.isEnabled = true
+                    Toast.makeText(requireContext(), "Введите корректные данные!", Toast.LENGTH_SHORT).show()
                 }
             }
         }

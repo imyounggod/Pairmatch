@@ -61,11 +61,11 @@ class MainAdapter :
                 tvPlayerName4.text = data.team?.member4?.name ?: ""
                 tvPlayerName5.text = data.team?.member5?.name ?: ""
 
-                tvPlayerPoint1.text = data.team?.member1?.score.toString()
-                tvPlayerPoint2.text = data.team?.member2?.score.toString()
-                tvPlayerPoint3.text = data.team?.member3?.score.toString()
-                tvPlayerPoint4.text = data.team?.member4?.score.toString()
-                tvPlayerPoint5.text = data.team?.member5?.score.toString()
+                tvPlayerPoint1.text ="%.1f".format(data.team?.member1?.score)
+                tvPlayerPoint2.text = "%.1f".format(data.team?.member2?.score)
+                tvPlayerPoint3.text = "%.1f".format(data.team?.member3?.score)
+                tvPlayerPoint4.text = "%.1f".format(data.team?.member4?.score)
+                tvPlayerPoint5.text = "%.1f".format(data.team?.member5?.score)
 
                 tvScoreTeam.text = data.team?.teamPoints.toString()
 

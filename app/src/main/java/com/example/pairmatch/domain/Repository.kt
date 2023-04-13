@@ -7,10 +7,11 @@ import com.example.pairmatch.entites.TeamMember
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
-    fun getTeams(): Flow<List<Team>>
-    fun getBets(userId: String): Flow<List<Bet>>
-    fun getHistoryBets(userId: String): Flow<List<HistoryBet>>
-    fun getPlayers(): Flow<List<TeamMember>>
+    suspend fun  getTeams(): List<Team>
+     suspend fun  getBets(userId: String): List<Bet>
+     fun  getBetsF(userId: String): Flow<List<Bet>>
+    fun  getHistoryBets(userId: String): Flow<List<HistoryBet>>
+     suspend fun  getPlayers(): MutableList<TeamMember>
     suspend fun insertTeam(team: Team)
     suspend fun insertPlayer(teamMember: TeamMember)
     suspend fun insertPlayerStart(teamMember: TeamMember)

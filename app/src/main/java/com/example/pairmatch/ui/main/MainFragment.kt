@@ -42,6 +42,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             vm.getUserData()
+            vm.getPlayers()
         }
 
 
@@ -100,10 +101,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 playerAdapter.items = data.toMutableList()
             }
             vm.bets.observe(viewLifecycleOwner) { data ->
-                println(data)
                 rvTeam.isVisible = true
-                if(data.isNotEmpty()){
-                    formAddTeam.isVisible = false
+                if(data.isNotEmpty() && ( vm.selectedTeam.value?.member1 == null
+                    && vm.selectedTeam.value?.member2 == null
+                    && vm.selectedTeam.value?.member3 == null
+                    && vm.selectedTeam.value?.member4 == null
+                    && vm.selectedTeam.value?.member5 == null)){
                 }
                 mainAdapter.items = data.toMutableList()
             }
@@ -221,6 +224,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 vm.setBet(tvBetValue.text.toString(), "low")
                 formAddTeam.isVisible = false
                 tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
+                vm.isClearForm()
             }
             btnHighOefficient.setOnClickListener {
                 if (tvSelectedDate.text == "дд.мм.гггг - дд.мм.гггг"){
@@ -232,6 +236,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 vm.setBet(tvBetValue.text.toString(), "high")
                 formAddTeam.isVisible = false
                 tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
+                vm.isClearForm()
             }
             btnAddTeam.setOnClickListener {
                 vm.isClearForm()
