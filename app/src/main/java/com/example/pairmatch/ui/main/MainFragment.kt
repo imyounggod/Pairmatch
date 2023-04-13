@@ -93,7 +93,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                         ContextCompat.getDrawable(requireContext(), R.drawable.male_user_avatar)
                 else
                     userAvatar.background =
-                        ContextCompat.getDrawable(requireContext(), R.drawable.male_user_avatar)
+                        ContextCompat.getDrawable(requireContext(), R.drawable.female_user_avatar)
 
                 userName.text = data?.user_name
                 tvUserBalance.text = data?.user_balance?.toInt().toString()

@@ -125,14 +125,11 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(FragmentSignupBinding
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Что-то пошло не так",
+                        "Что-то пошло не так, попробуйте снова!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             }
-
-
         }
         btnDecline.setOnClickListener {
             statePrivacyPolicy = false
