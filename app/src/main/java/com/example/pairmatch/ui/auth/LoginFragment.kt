@@ -68,7 +68,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.google.ru/?hl=ru")
+                    Uri.parse("https://doc-hosting.flycricket.io/pairmatch-sports-privacy-policy/e1996337-b270-4e33-8e3d-213f3767839a/privacy")
                 )
             )
         }
