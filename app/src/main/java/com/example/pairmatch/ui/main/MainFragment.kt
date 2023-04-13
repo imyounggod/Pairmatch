@@ -32,10 +32,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     private val mainAdapter = MainAdapter()
     private var index = 0
 
-    private var isLow = false
-    private var isHigh = false
-
-    private val playerAdapter = PlayerAdapter() { ind, player ->
+    private val playerAdapter = PlayerAdapter { ind, player ->
         vm.selectPlayer(player)
     }
 
@@ -239,6 +236,13 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             btnAddTeam.setOnClickListener {
                 vm.isClearForm()
                 formAddTeam.isVisible = true
+            }
+            btnBack.setOnClickListener {
+                boxPlayers.isVisible = false
+                boxMain.isVisible = true
+                rvTeam.isVisible = true
+                rvPlayers.isVisible = false
+                (activity as BottomNavigationActivity).showBnv()
             }
             btnSelectPlayer.setOnClickListener {
                 (activity as BottomNavigationActivity).showBnv()

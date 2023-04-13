@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/inter_medium"
+                android:maxLines="1"
                 android:paddingTop="3dp"
                 android:text="Lorena Shilczh"
                 android:textAlignment="center"
