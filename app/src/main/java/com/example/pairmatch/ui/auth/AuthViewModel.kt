@@ -20,14 +20,6 @@ class AuthViewModel @Inject constructor(private val repository: Repository) : Vi
     private var firebaseFirestore = FirebaseFirestore.getInstance()
 
     init {
-//        viewModelScope.launch {
-//            var result = firebaseFirestore.collection("players").get().await()
-//            result.documents.forEach {
-//                it.toObject(TeamMember::class.java)
-//                    ?.let { it1 -> repository.insertPlayerStart(it1) }
-//            }
-//
-//        }
     }
 
     suspend fun registerUser(
@@ -61,11 +53,12 @@ class AuthViewModel @Inject constructor(private val repository: Repository) : Vi
     }
 
     suspend fun login(email: String, password: String): Boolean {
-        var isLogin = false
-        val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
-        if (authResult.user != null) {
-            isLogin = true
+        return try {
+            val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            authResult.user != null
+        }catch (e: java.lang.Exception){
+            false
         }
-        return isLogin
+
     }
 }

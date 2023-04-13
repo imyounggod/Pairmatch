@@ -1,5 +1,8 @@
 package com.example.pairmatch.entites
 
+import androidx.annotation.Keep
+
+@Keep
 data class User(
     var user_uid: String? = null,
     var user_name: String? = null,

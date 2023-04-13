@@ -1,5 +1,6 @@
 package com.example.pairmatch.entites
 
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
@@ -10,10 +11,11 @@ import kotlin.random.Random
 
 @Entity()
 @TypeConverters(Converters::class)
+@Keep
 data class Team(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val scheduleMatch: String? = null,
+    var scheduleMatch: String? = "дд.мм.гггг - дд.мм.гггг",
     var member1: TeamMember? = null,
     var member2: TeamMember? = null,
     var member3: TeamMember? = null,

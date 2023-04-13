@@ -11,11 +11,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.pairmatch.BaseFragment
 import com.example.pairmatch.BottomNavigationActivity
 import com.example.pairmatch.R
 import com.example.pairmatch.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate){
@@ -41,8 +43,26 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             btnLogin.setOnClickListener {
                 btnLogin.setOnClickListener {
                     if (isValidateData()){
-                        /*vm.login(fieldEmail.text.toString(), fieldPassword.text.toString())*/
-                        if (!statePrivacyPolicy) openDialog()
+                        viewLifecycleOwner.lifecycleScope.launch {
+                            val result = vm.login(fieldEmail.text.toString(), fieldPassword.text.toString())
+                            if (result) {
+
+                                requireActivity().finish()
+                                (activity)?.startActivity(
+                                    Intent(
+                                        requireContext(),
+                                        BottomNavigationActivity::class.java
+                                    )
+                                )
+                                dialogCustom.dismiss()
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Что-то пошло не так, попробуйте снова!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
                     }  else {
                         Toast.makeText(requireContext(), "Введите корректные данные!", Toast.LENGTH_SHORT).show()
                     }
@@ -65,12 +85,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         val privacyPolicy: TextView = dialogCustom.findViewById(R.id.tv_link)
 
         privacyPolicy.setOnClickListener {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://doc-hosting.flycricket.io/pairmatch-sports-privacy-policy/e1996337-b270-4e33-8e3d-213f3767839a/privacy")
-                )
-            )
+
         }
 
         btnAccept.setOnClickListener {

@@ -4,6 +4,9 @@
     <style name="BottomNavigationView">
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">10sp</item>
-    </style>
 
+    </style>
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

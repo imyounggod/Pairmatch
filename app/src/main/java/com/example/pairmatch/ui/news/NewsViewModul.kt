@@ -23,6 +23,7 @@ class NewsViewModul : ViewModel() {
     private fun getData() {
         viewModelScope.launch {
             _news.value = getNews()
+            println(_news.value)
         }
     }
 
@@ -45,6 +46,7 @@ class NewsViewModul : ViewModel() {
             )
         }
 
+        println(json)
         return json
     }
 }

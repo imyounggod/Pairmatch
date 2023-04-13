@@ -13,7 +13,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="2dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp">
@@ -51,31 +51,23 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/box_point"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginEnd="12dp"
-                        app:cardBackgroundColor="@color/yellow_1"
-                        app:cardCornerRadius="18dp"
-                        app:cardElevation="0dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+
 
                         <TextView
                             android:id="@+id/player_point"
                             android:layout_width="22dp"
                             android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/circleshape"
+                            android:layout_marginEnd="12dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
                             android:fontFamily="@font/inter_bold"
                             android:paddingTop="5dp"
-                            android:text="16.6"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="8sp" />
-
-                    </androidx.cardview.widget.CardView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -118,30 +110,38 @@
                 android:text="22.02.2023"
                 android:textColor="@color/black"
                 android:textSize="8sp" />
-
-            <TextView
-                android:id="@+id/left_team"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/date_schedule"
-                android:layout_alignParentLeft="true"
+                android:background="@drawable/bg_r_l_team"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/inter_regular"
-                android:text="l team"
-                android:textColor="@color/black"
-                android:textSize="8sp" />
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="9dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/left_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="l team"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="8sp" />
 
-            <TextView
-                android:id="@+id/right_team"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/date_schedule"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/inter_regular"
-                android:text="r team"
-                android:textColor="@color/black"
-                android:textSize="8sp" />
+                <TextView
+                    android:id="@+id/right_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
+                    android:textAlignment="textEnd"
+                    android:text="r team"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

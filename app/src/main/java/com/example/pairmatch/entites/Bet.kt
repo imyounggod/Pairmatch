@@ -1,5 +1,6 @@
 package com.example.pairmatch.entites
 
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
@@ -9,6 +10,7 @@ import com.google.gson.reflect.TypeToken
 
 @Entity
 @TypeConverters(ConvertersTeam::class)
+@Keep
 data class Bet(
     @PrimaryKey(autoGenerate = true) val id : Int? = null,
     var idUser : String? = null,
@@ -22,6 +24,7 @@ data class Bet(
 
 @Entity(tableName = "historyBet")
 @TypeConverters(ConvertersTeam::class)
+@Keep
 data class HistoryBet(
     @PrimaryKey(autoGenerate = true) val id : Int? = null,
     var idUser : String? = null,

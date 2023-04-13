@@ -40,7 +40,7 @@
             android:layout_marginBottom="19dp"
             android:textSize="18sp"
             android:textColor="@color/yellow_1"
-            android:text="Как играть?"/>
+            android:text="Как работает система подсчёта очков в фэнтези-спорте?"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             android:layout_marginBottom="19dp"
             android:textSize="16sp"
             android:textColor="@color/white"
-            android:text="@string/txt_lorem2"/>
+            android:text="@string/score_info"/>
 
     </LinearLayout>
 
