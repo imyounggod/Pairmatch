@@ -211,7 +211,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             btnAddTeam.setOnClickListener {
                 if (isLow) vm.setBet(tvBetValue.text.toString(), "low")
                 if (isHigh) vm.setBet(tvBetValue.text.toString(), "high")
-
+                if(!isLow && !isHigh) return@setOnClickListener
                 tvSelectedDate.text = "дд.мм.гггг - дд.мм.гггг"
                 isLow = false
                 isHigh = false

@@ -98,7 +98,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
                     if (date != null) {
                         if (date <= Calendar.getInstance().time) {
                             val score =
-                                _players.value!![bet.team!!.member1!!.id!!].score + _players.value!![bet.team!!.member2!!.id!!].score + _players.value!![bet.team!!.member3!!.id!!].score + _players.value!![bet.team!!.member4!!.id!!].score + _players.value!![bet.team!!.member5!!.id!!].score
+                                _players.value!![bet.team!!.member1!!.id!!-1].score + _players.value!![bet.team!!.member2!!.id!!-1].score + _players.value!![bet.team!!.member3!!.id!!-1].score + _players.value!![bet.team!!.member4!!.id!!-1].score + _players.value!![bet.team!!.member5!!.id!!-1].score
                             val newBet = HistoryBet(idUser = FirebaseAuth.getInstance().uid,
                                 bet_value = bet.bet_value,
                                 coef_win = bet.coef_win,

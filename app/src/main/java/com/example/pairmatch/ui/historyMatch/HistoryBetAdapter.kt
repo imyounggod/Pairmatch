@@ -68,7 +68,7 @@ class HistoryBetAdapter : RecyclerView.Adapter<HistoryBetAdapter.VH>() {
                 tvPlayerPoint4.text = "%.2f".format(data.team?.member4?.score)
                 tvPlayerPoint5.text = "%.2f".format(data.team?.member5?.score)
 
-                tvScoreTeam.text = data.team?.endPoints.toString()
+                tvScoreTeam.text = "%.2f".format(data.team?.endPoints)
                 if(data.team?.teamPoints!! > data.team?.endPoints!!){
                     if(data.coef_los == true){
                         tvScore.text = (data.coef!!.toDouble() * data.bet_value!!.toInt()).toString()
