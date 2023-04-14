@@ -49,7 +49,7 @@ class LeaderBoardAdapter : RecyclerView.Adapter<LeaderBoardAdapter.VH>() {
                 if (data.user_gender == "male")
                     userAvatar.background = ContextCompat.getDrawable(itemView.context, R.drawable.male_user_avatar)
                 else
-                    userAvatar.background = ContextCompat.getDrawable(itemView.context, R.drawable.male_user_avatar)
+                    userAvatar.background = ContextCompat.getDrawable(itemView.context, R.drawable.female_user_avatar)
 
                 userPosition.text = (position+1).toString()
                 userName.text = data.user_name

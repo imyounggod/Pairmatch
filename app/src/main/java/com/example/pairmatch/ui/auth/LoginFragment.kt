@@ -24,7 +24,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private val vm : AuthViewModel by viewModels()
     private lateinit var dialogCustom: Dialog
-    private var statePrivacyPolicy: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,6 +61,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                                 "Что-то пошло не так, попробуйте снова!",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            it.isEnabled = true
                         }
                     }
                 }  else {
@@ -78,27 +78,5 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         return isValid
     }
 
-    private fun openDialog() {
-        dialogCustom.setContentView(R.layout.alert_dialog)
-        dialogCustom.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val btnAccept: Button = dialogCustom.findViewById(R.id.acceptBtn)
-        val btnDecline: Button = dialogCustom.findViewById(R.id.closeBtn)
-        val privacyPolicy: TextView = dialogCustom.findViewById(R.id.tv_link)
 
-        privacyPolicy.setOnClickListener {
-
-        }
-
-        btnAccept.setOnClickListener {
-            statePrivacyPolicy = true
-            requireActivity().finish()
-            (activity)?.startActivity(Intent(requireContext(), BottomNavigationActivity::class.java))
-            dialogCustom.dismiss()
-        }
-        btnDecline.setOnClickListener {
-            statePrivacyPolicy = false
-            dialogCustom.dismiss()
-        }
-        dialogCustom.show()
-    }
 }

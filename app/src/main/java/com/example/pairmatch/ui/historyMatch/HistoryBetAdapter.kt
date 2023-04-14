@@ -71,7 +71,7 @@ class HistoryBetAdapter : RecyclerView.Adapter<HistoryBetAdapter.VH>() {
                 tvScoreTeam.text = "%.2f".format(data.team?.endPoints)
                 if(data.team?.teamPoints!! > data.team?.endPoints!!){
                     if(data.coef_los == true){
-                        tvScore.text = (data.coef!!.toDouble() * data.bet_value!!.toInt()).toString()
+                        tvScore.text = "+" + (data.coef!!.toDouble() * data.bet_value!!.toInt()).toString()
                         boxResult.setBackgroundColor(Color.parseColor("#69B600"))
                     }else if (data.coef_win == true){
                         tvScore.text = "-${data.bet_value}"
@@ -82,7 +82,7 @@ class HistoryBetAdapter : RecyclerView.Adapter<HistoryBetAdapter.VH>() {
                         tvScore.text = "-${data.bet_value}"
                         boxResult.setBackgroundColor(Color.parseColor("#F92525"))
                     }else if (data.coef_win == true){
-                        tvScore.text = (data.coef!!.toDouble() * data.bet_value!!.toInt()).toString()
+                        tvScore.text = "+" +(data.coef!!.toDouble() * data.bet_value!!.toInt()).toString()
                         boxResult.setBackgroundColor(Color.parseColor("#69B600"))
                     }
                 }

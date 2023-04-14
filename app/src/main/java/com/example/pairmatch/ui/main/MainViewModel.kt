@@ -322,7 +322,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
             userBalance -= betValue
             firebaseFirestore.collection("users").document(userID.toString())
                 .update("user_balance", userBalance)
-
+            _userData.value = _userData.value?.copy(user_balance = userBalance)
         }
     }
 

@@ -97,6 +97,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 tvUserBalance.text = data?.user_balance?.toInt().toString()
             }
 
+
             vm.players.observe(viewLifecycleOwner) { data ->
                 playerAdapter.items = data.toMutableList()
             }

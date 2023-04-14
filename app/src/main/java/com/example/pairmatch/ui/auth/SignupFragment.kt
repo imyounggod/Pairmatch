@@ -6,12 +6,15 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.pairmatch.BaseFragment
@@ -107,9 +110,9 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>(FragmentSignupBinding
         btnAccept.setOnClickListener {
             viewLifecycleOwner.lifecycleScope.launch {
                 var result = vm.registerUser(
-                    binding?.fieldName?.text.toString(),
-                    binding?.fieldEmail?.text.toString(),
-                    binding?.fieldPassword?.text.toString(),
+                    binding?.fieldName?.text?.trim().toString(),
+                    binding?.fieldEmail?.text?.trim().toString(),
+                    binding?.fieldPassword?.text?.trim().toString(),
                     gender
                 )
                 if (result) {
